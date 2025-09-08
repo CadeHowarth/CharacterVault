@@ -6,6 +6,6 @@
     "scripts": {
         "start": "node server.js",
         "dock:build": "docker build -t staticbluegreen:latest .",
-        "dock:start": "docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 8080:3000 staticbluegreen"
+        "dock:start": "docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 8080:8080 staticbluegreen"
     }
 }

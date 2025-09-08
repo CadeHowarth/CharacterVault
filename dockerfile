@@ -17,13 +17,13 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs
 
 # Install application dependencies
-RUN npm install
+RUN npm install --no-audit
 
 # Copy the rest of the application code
 COPY . .
 
 # Expose the port your application listens on
-EXPOSE 3000
+EXPOSE 8080
 
 # Define the command to run your application when the container starts
-CMD ["npm", "run", "dock:start"]
+CMD ["npm", "start"]
