@@ -1,5 +1,4 @@
     const express = require('express')
-    const serveStatic = require('serve-static')
     const path = require('path')
 
     const app = express()
@@ -11,7 +10,7 @@
         res.sendFile(path.join(__dirname, 'src', 'index.html'))
     })
 
-    const port = 8080; // You can choose any available port
+    const port = 8080
     app.listen(port, () => {
         console.log(`Server running on http://localhost:${port}`)
     })
