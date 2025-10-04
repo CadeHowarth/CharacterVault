@@ -1,5 +1,9 @@
 const toggleButton = document.getElementById('toggle-btn')
 const sidebar = document.getElementById('sidebar')
+const carouselItems = document.getElementById('carousel-content')
+const backButton = document.getElementById('chevron-left')
+const nextButton = document.getElementById('chevron-right')
+const itemWidth = document.getElementById('scroll-item').offsetWidth
 
 function toggleSidebar() {
     sidebar.classList.toggle('close')
@@ -11,7 +15,6 @@ function toggleSidebar() {
     })
 }
 
-
 function toggleSubMenu(button) {
     button.nextElementSibling.classList.toggle('show')
     button.classList.toggle('rotate')
@@ -22,3 +25,11 @@ function toggleSubMenu(button) {
         toggleButton.classList.toggle('rotate')
     }
 }
+
+backButton.addEventListener('click', (event) => {
+    carouselItems.scrollLeft -= itemWidth
+})
+
+nextButton.addEventListener('click', (event) => {
+    carouselItems.scrollLeft += itemWidth
+})

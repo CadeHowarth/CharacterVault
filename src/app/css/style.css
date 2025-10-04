@@ -8,7 +8,7 @@
     --accent-color: #232b2e;
     --secondary-text-color: #c0c1c3;
     --text-align: center;
-    --bg-opacity: 0.8;
+    --bg-opacity: 1;
 }
 
 * {
@@ -29,6 +29,8 @@ body {
     background-position: center center;
     background-attachment: fixed;
     background-size: cover;
+    background-color: rgba(24, 31, 37, var(--bg-opacity));
+    background-blend-mode: multiply;
     color: var(--text-color);
     display: grid;
     grid-template-columns: auto 1fr;
@@ -66,10 +68,6 @@ body {
 }
 #sidebar ul li.active a {
     color: var(--text-color);
-    /* Uncomment this once I get svgs loaded on site */
-    /* svg{
-        fill: var(--accent-color);
-    } */
 }
 #sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
     border-radius: .5em;
@@ -80,7 +78,7 @@ body {
     align-items: center;
     gap: 1em;
 }
-#sidebar svg {
+#sidebar svg, .carousel-button svg {
     flex-shrink: 0;
     fill: var(--text-color);
 }
@@ -171,13 +169,20 @@ main h2 {
     font-size: 25px;
 }
 
+.header {
+    border-radius: 1em;
+    margin-bottom: 20px;
+    padding: min(3em, 15%);
+    
+    h1{ margin-top: .25em };
+    p{ margin-top: 1em};
+}
+
 .container {
     border: 1px solid var(--line-color);
     border-radius: 1em;
     margin-bottom: 20px;
     padding: min(3em, 15%);
-    background-color: rgba(24, 31, 37, var(--bg-opacity));
-    background-blend-mode: multiply;
     
     h1{ margin-top: .25em };
     p{ margin-top: 1em};
@@ -204,4 +209,59 @@ a.home-btn-group-body {
 }
 a.home-btn-group-body:hover {
     font-size: 18px;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+    position: relative;
+}
+.carousel-items {
+    display: flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    list-style: none;
+    width: 100%;
+    gap: 4vw;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  width: 85%;
+  padding: 60px;
+  margin-top: 1em;
+  border: 1px solid var(--line-color);
+  border-radius: 1em;
+  box-sizing: border-box;
+  text-align: center;
+  scroll-snap-align: center;
+}
+.carousel-button {
+    margin-left: auto;
+    padding: 1em;
+    margin-top: 1em;
+    border: none;
+    border-radius: .5em;
+    background: none;
+    cursor: pointer;
+    transform: scale(1.5);
+}
+.carousel-button svg {
+    transition: transform 300ms ease;
+    transform-origin: center center;
+}
+.carousel-button svg:hover {
+    transform: scale(1.8);
+}
+.carousel-button svg:active {
+    fill: var(--accent-color);
+}
+.carousel-button:disabled {
+    opacity: 0.2;
+    cursor: unset;
 }

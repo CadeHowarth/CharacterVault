@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home</title>
+        <title>Character Class - Home</title>
         <link rel="stylesheet" href="app/css/style.css">
         <script src="app/js/app.js" defer></script>
     </head>
@@ -49,7 +49,7 @@
             </ul>
         </nav>
         <main>
-            <div class="container">
+            <div class="header">
                 <h1 class="heading top">Your People
                     <br>
                     Your Characters
@@ -73,7 +73,21 @@
                 <h2 class="heading content">
                     Create, journey, and adventure for free.
                 </h2>
-                <p>The vault supports creating as many characters for as all supported game systems as needed. Away with faulty subscription services, gaming is for everyone.</p>
+                <p>The vault supports creating as many characters for all supported game systems as needed. Away with faulty subscription services, gaming is for everyone.</p>
+                <div class="carousel" data-testId="mainCarousel">
+                    <button class="carousel-button prev" id="chevron-left" data-testId="carouselBackBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+                    </button>
+                        <ul class="carousel-items" id="carousel-content">
+                            <li class="carousel-item" id="scroll-item">Choose System</li>
+                            <li class="carousel-item" id="scroll-item">Make a Character</li>
+                            <li class="carousel-item" id="scroll-item">Connect to Game</li>
+                            <li class="carousel-item" id="scroll-item">Share Character</li>
+                        </ul>
+                    <button class="carousel-button next" id="chevron-right" data-testId="carouselNextBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                    </button>
+                </div>
             </div>
             <div class="container">
                 <h2 class="heading content">
