@@ -13,6 +13,5 @@
     const port = 8080
     const host = '0.0.0.0'
     app.listen(port, host, () => {
-        console.log(`Listening on http://${host}:${port}`)
         console.log(`Server running on http://localhost:${port}`)
     })
