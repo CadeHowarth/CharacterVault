@@ -3,12 +3,50 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hello World</title>
+        <title>Home</title>
         <link rel="stylesheet" href="app/css/style.css">
+        <script type="text/javacript" src="app/js/app.js" defer></script>
     </head>
     <body>
-        <h1>Welcome!</h1>
-        <p>This is my simple static webpage.</p>
+        <nav id="sidebar">
+            <ul>
+                <li>
+                    <span class="logo">CharacterClass</span>
+                    <button id="toggle-btn" data-testId="sidebarToggle">Sidebar</button>
+                </li>
+                <li class="active">
+                    <a href="index.html" data-testId="homeBtn">
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="dashboard.html" data-testId="dashboardBtn">
+                        <span>Content</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="profile.html" data-testId="profileBtn">
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <button onclick="toggleSubMenu(this)" class="dropdown-btn" data-testId="createDropdown">
+                        <span>Create</span>
+                    </button>
+                    <ul class="sub-menu">
+                        <div data-testId="createList">
+                            <li><a href="#">Character Sheet</a></li>
+                        </div>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <div class="container">
+                <h1>Welcome!</h1>
+                <p>This is my simple static webpage.</p>
+            </div>
+        </main>
         <script src="app/js/loadlistener.js"></script>
     </body>
     </html>

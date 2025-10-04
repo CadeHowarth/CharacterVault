@@ -46,7 +46,7 @@ jobs:
       run: |
         echo "${KUBE_CONFIG_DATA}" | base64 -d > kubeconfig.yaml
         chmod 600 kubeconfig.yaml
-         export KUBECONFIG=kubeconfig.yaml
+        export KUBECONFIG=kubeconfig.yaml
         kubectl set image deployment/webapp-deployment webapp=$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG --record
       env: 
         KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
