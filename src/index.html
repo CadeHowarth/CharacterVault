@@ -11,7 +11,7 @@
         <nav id="sidebar">
             <ul>
                 <li>
-                    <span class="logo">CharacterClass</span>
+                    <span class="logo">Character Vault</span>
                     <button onclick=toggleSidebar()  id="toggle-btn" data-testId="sidebarToggle">
                         <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
                     </button>
@@ -50,8 +50,36 @@
         </nav>
         <main>
             <div class="container">
-                <h1>Welcome!</h1>
-                <p>This is my simple static webpage.</p>
+                <h1 class="heading top">Your People
+                    <br>
+                    Your Characters
+                    <br>
+                    Your
+                    <span>
+                        <em class="italic">Vault</em>
+                    </span>
+                </h1>
+                <p>Create, share, and store all of your unique characters for your favorite tabletop systems with Character Vault.</p>
+            </div>
+            <div class="collection">
+                <a href="/games/choose" class="home-btn-group-body" data-testId="btnGroupChar">
+                    Create a Character
+                </a>
+                <a href="games/browse" class="home-btn-group-body" data-testId="btnGroupGames">
+                    Browse Games
+                </a>
+            </div>
+            <div class="container">
+                <h2 class="heading content">
+                    Create, journey, and adventure for free.
+                </h2>
+                <p>The vault supports creating as many characters for as all supported game systems as needed. Away with faulty subscription services, gaming is for everyone.</p>
+            </div>
+            <div class="container">
+                <h2 class="heading content">
+                    Share with your table.
+                </h2>
+                <p>With the connection feature, coordinated gaming tables are at your fingertips. You can share your characters with your friends, and even export your character sheets for your convenience. The vault doesn't care where your sheets are- as long as you have them.</p>
             </div>
         </main>
         <script src="app/js/loadlistener.js"></script>

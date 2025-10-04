@@ -8,6 +8,7 @@
     --accent-color: #232b2e;
     --secondary-text-color: #c0c1c3;
     --text-align: center;
+    --bg-opacity: 0.8;
 }
 
 * {
@@ -23,11 +24,14 @@ html {
 body {
     min-height: 100vh;
     min-height: 100dvh;
-    background-color: var(--base-color);
+    background-image: url('../content/images/pexels-pixabay-247676.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
     color: var(--text-color);
     display: grid;
     grid-template-columns: auto 1fr;
-
 }
 
 #sidebar {
@@ -111,7 +115,7 @@ body {
     cursor: pointer;
 
     svg {
-        transition: rotoate 150ms ease;
+        transition: rotate 150ms ease;
     }
 }
 #toggle-btn:hover {
@@ -143,6 +147,28 @@ main p {
     color: var(--secondary-text-color);
     margin-top: 5px;
     margin-bottom: 5px;
+    text-align: center;
+    inline-size: 450px;
+    overflow-wrap: break-word;
+    margin: auto;
+}
+
+main h1 {
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 40px;
+    font-size: 45px;
+}
+main h1.heading.top span em.italic {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+main h2 {
+    text-align: center;
+    letter-spacing: 1px;
+    line-height: 40px;
+    font-size: 25px;
 }
 
 .container {
@@ -150,6 +176,32 @@ main p {
     border-radius: 1em;
     margin-bottom: 20px;
     padding: min(3em, 15%);
+    background-color: rgba(24, 31, 37, var(--bg-opacity));
+    background-blend-mode: multiply;
+    
+    h1{ margin-top: .25em };
+    p{ margin-top: 1em};
+}
 
-    h1, p { margin-top: 1em };
+.collection {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 20px;
+    padding: min(3em, 15%);
+}
+
+a.home-btn-group-body {
+    border: 1px solid var(--line-color);
+    border-radius: 1em;
+    padding: 30px;
+    padding-right: 150px;
+    inline-size: 100px;
+    overflow-wrap: break-word;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: font-size 300ms ease;
+}
+a.home-btn-group-body:hover {
+    font-size: 18px;
 }

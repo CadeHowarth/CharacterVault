@@ -11,10 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleButton.addEventListener('click', () => {
         if (sidebar.classList.contains('close') && toggleButton.classList.contains('rotate')) {
             sessionStorage.setItem('sidebarState', 'close')
-            console.log('--CLICK CLOSE--')
         } else {
             sessionStorage.setItem('sidebarState', 'show')
-            console.log('--CLICK OPEN--')
         }
     })
 })
