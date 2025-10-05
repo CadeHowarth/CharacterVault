@@ -7,8 +7,9 @@
     --text-color: #fcffff;
     --accent-color: #232b2e;
     --secondary-text-color: #c0c1c3;
+    --base-btn-color: #1d5993;
     --text-align: center;
-    --bg-opacity: 1;
+    --bg-opacity: .1;
 }
 
 * {
@@ -24,7 +25,7 @@ html {
 body {
     min-height: 100vh;
     min-height: 100dvh;
-    background-image: url('../content/images/pexels-pixabay-247676.jpg');
+    background-image: linear-gradient(to bottom, transparent 0%, black 40%), url('../content/images/pexels-pixabay-247676.jpg');
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
@@ -179,7 +180,6 @@ main h2 {
 }
 
 .container {
-    border: 1px solid var(--line-color);
     border-radius: 1em;
     margin-bottom: 20px;
     padding: min(3em, 15%);
@@ -193,22 +193,28 @@ main h2 {
     justify-content: center;
     gap: 60px;
     margin-bottom: 20px;
-    padding: min(3em, 15%);
+    padding: min(1.5em, 15%);
 }
 
 a.home-btn-group-body {
     border: 1px solid var(--line-color);
-    border-radius: 1em;
+    border-radius: 3em;
     padding: 30px;
     padding-right: 150px;
     inline-size: 100px;
+    width: 100px;
+    height: 50px;
     overflow-wrap: break-word;
     color: var(--text-color);
     text-decoration: none;
+}
+a.home-btn-group-body span {
     transition: font-size 300ms ease;
 }
 a.home-btn-group-body:hover {
-    font-size: 18px;
+    span {
+        font-size: 18px;
+    }
 }
 
 .carousel {
@@ -238,7 +244,7 @@ a.home-btn-group-body:hover {
   border: 1px solid var(--line-color);
   border-radius: 1em;
   box-sizing: border-box;
-  text-align: center;
+  text-align: left;
   scroll-snap-align: center;
 }
 .carousel-button {
@@ -264,4 +270,42 @@ a.home-btn-group-body:hover {
 .carousel-button:disabled {
     opacity: 0.2;
     cursor: unset;
+}
+
+.divider {
+    border-top: 1px solid var(--line-color);
+    width: 60%;
+    margin: auto;
+}
+
+.layout-grid {
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.grid-card {
+    background-color: var(--base-color);
+    border: 1px solid var(--line-color);
+    border-radius: .25em;
+    padding: 30px;
+    transition: 300ms ease;
+}
+.grid-card span {
+    color: var(--secondary-text-color);
+    font-size: 15px;
+}
+.grid-card:hover {
+    transform: translateY(-5px);
+}
+
+#create-char-btn {
+    background-image: linear-gradient(to right, var(--base-color), var(--base-btn-color));
+}
+
+#browse-games-btn {
+    background-image: linear-gradient(to right, var(--base-color), var(--accent-color));
 }
