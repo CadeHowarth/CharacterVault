@@ -26,10 +26,10 @@ function toggleSubMenu(button) {
     }
 }
 
-backButton.addEventListener('click', (event) => {
+backButton.addEventListener('click', () => {
     carouselItems.scrollLeft -= itemWidth
 })
 
-nextButton.addEventListener('click', (event) => {
+nextButton.addEventListener('click', () => {
     carouselItems.scrollLeft += itemWidth
 })

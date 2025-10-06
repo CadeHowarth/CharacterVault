@@ -36,6 +36,9 @@ body {
     display: grid;
     grid-template-columns: auto 1fr;
 }
+body.modal-open {
+    overflow: hidden;
+}
 
 #sidebar {
     box-sizing: border-box;
@@ -44,7 +47,6 @@ body {
     padding: 5px 1em;
     background-color: var(--base-color);
     border-right: 1px solid var(--line-color);
-
     position: sticky;
     top: 0;
     align-self: start;
@@ -70,7 +72,7 @@ body {
 #sidebar ul li.active a {
     color: var(--text-color);
 }
-#sidebar a, #sidebar .dropdown-btn, #sidebar .logo {
+#sidebar a, #sidebar .dropdown-btn, #sidebar #login-btn, #sidebar .logo {
     border-radius: .5em;
     padding: .85em;
     text-decoration: none;
@@ -83,10 +85,10 @@ body {
     flex-shrink: 0;
     fill: var(--text-color);
 }
-#sidebar a span, #sidebar .dropdown-btn span {
+#sidebar a span, #sidebar #login-btn span, #sidebar .dropdown-btn span {
     flex-grow: 1;
 }
-#sidebar a:hover, #sidebar .dropdown-btn:hover {
+#sidebar a:hover, #sidebar #login-btn:hover, #sidebar .dropdown-btn:hover {
     background-color: var(--hover-color);
 }
 #sidebar .sub-menu {
@@ -129,7 +131,7 @@ body {
     rotate: -180deg;
 }
 
-.dropdown-btn {
+.dropdown-btn, #login-btn {
     width: 100%;
     text-align: left;
     background: none;
@@ -197,7 +199,7 @@ main h2 {
 }
 
 a.home-btn-group-body {
-    border: 1px solid var(--line-color);
+    border: 3px solid var(--line-color);
     border-radius: 3em;
     padding: 30px;
     padding-right: 150px;
@@ -222,7 +224,6 @@ a.home-btn-group-body:hover {
     align-items: center;
     width: 50%;
     margin: auto;
-    position: relative;
 }
 .carousel-items {
     display: flex;
@@ -248,16 +249,16 @@ a.home-btn-group-body:hover {
   scroll-snap-align: center;
 }
 .carousel-button {
-    margin-left: auto;
     padding: 1em;
     margin-top: 1em;
     border: none;
     border-radius: .5em;
     background: none;
     cursor: pointer;
-    transform: scale(1.5);
 }
 .carousel-button svg {
+    width: 180%;
+    height: 180%;
     transition: transform 300ms ease;
     transform-origin: center center;
 }
