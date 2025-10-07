@@ -1,7 +1,17 @@
 {
     "dependencies": {
+        "@apollo/server": "^5.0.0",
+        "@as-integrations/express5": "^1.1.2",
+        "bcrypt": "^6.0.0",
         "connect": "^3.7.0",
-        "express": "^5.1.0"
+        "dotenv": "^17.2.3",
+        "express": "^5.1.0",
+        "graphql": "^16.11.0",
+        "graphql-http": "^1.22.4",
+        "graphql-tag": "^2.12.6",
+        "jsonwebtoken": "^9.0.2",
+        "pg": "^8.16.3",
+        "pg-promise": "^12.2.0"
     },
     "scripts": {
         "start": "node server.js",

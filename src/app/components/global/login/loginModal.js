@@ -1,18 +1,20 @@
 const loginButton = document.getElementById('login-btn')
 const closeModalButton = document.getElementById('close-btn')
-const loginModal = document.getElementById('login-modal')
+const loginModal = document.getElementById('login-modal-form')
+const modalContainer = document.getElementById('login-modal')
 const modalBackdrop = document.getElementById('modal-backdrop')
-const username = document.getElementById('username')
-const password = document.getElementById('password')
+const usernameInput = document.getElementById('username')
+const passwordInput = document.getElementById('password')
 const usernameError = document.getElementById('username-error')
 const passwordError = document.getElementById('password-error')
 
+import { LOGIN_MUTATION } from '../../../graphql/users/mutations/login.js'
+
 loginButton.addEventListener('click', () => {
-    loginModal.classList.remove('hidden')
+    modalContainer.classList.remove('hidden')
     modalBackdrop.classList.remove('hidden')
     document.body.classList.add('modal-open')
 })
-
 
 closeModalButton.addEventListener('click', () => {
     loginModal.classList.add('hidden')
@@ -20,48 +22,91 @@ closeModalButton.addEventListener('click', () => {
     document.body.classList.remove('modal-open')
 })
 
-username.addEventListener('input', () => {
-    if (username.validity.valid) {
+usernameInput.addEventListener('input', () => {
+    if (usernameInput.validity.valid) {
         usernameError.innerHTML = ''
         usernameError.classList.remove('active')
-        username.classList.remove('invalid')
+        usernameInput.classList.remove('invalid')
     } else {
         showUsernameError()
     }
 })
 
-password.addEventListener('input', () => {
-    if (password.validity.valid) {
+passwordInput.addEventListener('input', () => {
+    if (passwordInput.validity.valid) {
         passwordError.innerHTML = ''
         passwordError.classList.remove('active')
-        password.classList.remove('invalid')
+        passwordInput.classList.remove('invalid')
     } else {
         showPasswordError()
     }
 })
 
 function showUsernameError() {
-    if (username.validity.valueMissing) {
+    if (usernameInput.validity.valueMissing) {
         usernameError.innerHTML = 'This field is required (You cannot leave this field blank)'
     } 
     usernameError.classList.add('active')
-    username.classList.add('invalid')
+    usernameInput.classList.add('invalid')
 }
 
 function showPasswordError() {
-    if (password.validity.valueMissing) {
+    if (passwordInput.validity.valueMissing) {
         passwordError.innerHTML = 'This field is required (You cannot leave this field blank)'
     }
     passwordError.classList.add('active')
-    password.classList.add('invalid')
+    passwordInput.classList.add('invalid')
 }
 
-loginModal.addEventListener("submit", (event) => {
-  if (!username.validity.valid) {
+loginModal.addEventListener('submit', async (event) => {
+    event.preventDefault()
+
+    if (!usernameInput.validity.valid) {
     showUsernameError()
-    event.preventDefault()
-  } else if (!password.validity.valid) {
+    return
+    } 
+    
+    if (!passwordInput.validity.valid) {
     showPasswordError()
-    event.preventDefault()
-  }
+    return
+    }
+
+    const username = usernameInput.value
+    const password = passwordInput.value
+
+    usernameError.innerHTML = ''
+    passwordError.innerHTML = ''
+
+    try {
+        const response = await fetch('/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                query: LOGIN_MUTATION,
+                variables: { username, password },
+            }),
+        })
+
+        const result = await response.json()
+
+        if (result.errors) {
+            console.error(result.errors)
+            return
+        }
+
+        const { token, user } = result.data.loginUser
+        localStorage.setItem('auth_token', token)
+
+        console.log('Login successful', user.username)
+        modalContainer.classList.add('hidden')
+        modalContainer.style.display = 'none'
+        modalBackdrop.classList.add('hidden')
+        document.body.classList.remove('modal-open')
+
+    } catch (error) {
+        console.error('Login failed:', error)
+
+    }
 })

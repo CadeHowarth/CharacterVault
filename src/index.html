@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="app/css/style.css">
         <link rel="stylesheet" href="app/components/global/login/loginModal.css">
         <script src="app/js/app.js" defer></script>
-        <script src="app/components/global/login/loginModal.js" defer></script>
+        <script type="module" src="app/components/global/login/loginModal.js" defer></script>
     </head>
     <body>
         <div class="overlay hidden" id="modal-backdrop"></div>
@@ -15,7 +15,7 @@
             <span onclick="document.getElementById('login-modal').style.display='none'" class="close" id="close-btn" title="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
             </span>
-            <form class="modal-content animate" novalidate>
+            <form class="modal-content animate" id="login-modal-form" novalidate>
                 <div class="modal-container">
                     <div class="inputs modal-container" id="inputs-container">
                         <label for="username">
