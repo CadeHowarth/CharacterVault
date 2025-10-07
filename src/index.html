@@ -15,16 +15,18 @@
             <span onclick="document.getElementById('login-modal').style.display='none'" class="close" id="close-btn" title="Close">
                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
             </span>
-            <form class="modal-content animate">
+            <form class="modal-content animate" novalidate>
                 <div class="modal-container">
                     <div class="inputs modal-container" id="inputs-container">
                         <label for="username">
                             <b>Username</b>
-                            <input type="text" placeholder="Enter Username or Email" data-testId="loginUsernameInput" name="username" required>
+                            <input type="text" placeholder="Enter Username or Email" data-testId="loginUsernameInput" name="username" id="username" required>
+                            <span class="error" aria-live="polite" id="username-error"></span>
                         </label>
                         <label for="password">
                             <b>Password</b>
-                            <input type="text" placeholder="Enter Password" data-testId="loginPasswordInput" name="password" required>
+                            <input type="password" placeholder="Enter Password" data-testId="loginPasswordInput" name="password" id="password" required>
+                            <span class="error" aria-live="polite" id="password-error"></span>
                         </label>
                     </div>
                 <div class="links" id="links-container">
@@ -38,12 +40,14 @@
                         </a>
                     </span>
                 </div>
+                <div class="buttons" id="buttons-container">
                     <button type="submit" id="login-submit" data-testId="submitBtn">
                         <span>Login</span>
                     </button>
                     <button type="submit" id="register-submit" data-testId="registerBtn">
                         <span>Register</span>
                     </button>
+                </div>
                 </div>
             </form>
         </div>

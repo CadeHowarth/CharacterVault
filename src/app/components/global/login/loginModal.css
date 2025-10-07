@@ -27,20 +27,28 @@
 }
 
 .modal-content .modal-container{
-    display: grid;
+    display: grid flex;
     background-color: var(--accent-color);
 }
 
-.modal-content .modal-container #inputs-container label input {
+.modal-content .modal-container #inputs-container {
     display: grid;
+}
+
+.modal-content .modal-container #inputs-container label input {
     padding: 20px;
     width: 95%;
     margin-top: 10px;
     border: 1px solid var(--line-color);
     border-radius: 1em;
+    color: var(--text-color);
     background-color: var(--accent-color);
     font-size: 18px;
     font-weight: 400;
+}
+
+.modal-content .modal-container #inputs-container label input.invalid {
+    border: 1px solid var(--error-color);
 }
 
 .modal-content .modal-container #inputs-container label b {
@@ -49,6 +57,10 @@
 
 .modal-content .modal-container #inputs-container label {
     margin-top: 10px;
+}
+
+.modal-content .modal-container #buttons-container button {
+    display: grid;
 }
 
 .modal-content #login-submit, .modal-content #register-submit {
@@ -67,7 +79,8 @@
 
 .modal-content #links-container {
     display: flex;
-    gap: 430px;
+    position: relative;
+    gap: 60%;
     margin-top: 6px;
 
     #forgot-btn a span {
@@ -83,22 +96,23 @@
 }
 
 #close-btn {
-    position: absolute;
+    position: relative;
     right: 25px;
-    top: 5%;
-    left: 94%;
+    left: 99%;
     color: var(--secondary-text-color);
-    font-size: 35px;
-    font-weight: bold;
-}
-
-#close-btn {
-    transform: scale(2);
 }
 
 #close-btn:hover, #close-btn:focus {
     color: var(--hover-color);
     cursor: pointer;
+}
+
+.modal-content #login-submit:hover, .modal-content #register-submit:hover {
+    filter: brightness(120%);
+}
+
+.modal-content #login-submit:active, .modal-content #register-submit:active {
+    filter: brightness(80%);
 }
 
 .animate {
@@ -121,4 +135,15 @@
 
 .overlay.hidden {
     display: none;
+}
+
+.modal-content .error {
+    width: 95%;
+    padding: 0;
+    font-size: 80%;
+    color: var(--error-color);
+}
+
+.modal-content .error.active {
+    padding: 0.3em;
 }
