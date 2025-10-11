@@ -95,10 +95,12 @@
     }
 }
 
+/* Need to set this position to absolute so it does not overflow the body page context and cause the sidebar to switch right when closing */
 .close {
-    position: relative;
-    right: 25px;
-    left: 99%;
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    left: unset;
     color: var(--secondary-text-color);
 }
 
@@ -124,13 +126,13 @@
     to {transform: scale(1)}
 }
 
-.overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
-    background-color:rgba(0, 0, 0, 0.5);
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .overlay.hidden {

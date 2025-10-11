@@ -57,9 +57,9 @@ body.modal-open {
 }
 #sidebar.close {
     padding: 5px;
-    width: 60px;
+    width: 60px; 
 }
-#sidebar ul{
+#sidebar ul {
     list-style: none;
 }
 #sidebar > ul > li:first-child {
