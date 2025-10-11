@@ -3,7 +3,7 @@ export const LOGIN_MUTATION = `
         loginUser(username: $username, password: $password) {
             token
             user {
-                id,
+                id
                 username
             }
         }

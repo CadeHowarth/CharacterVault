@@ -18,7 +18,9 @@ const resolvers = {
         },
     },
     Mutation: {
-        createUser: async (parent, { username, email, password }) => {
+        createUser: async (parent, args) => {
+            const { username, email, password } = args
+
             const hashedPassword = await bcrypt.hash(password, 10)
 
             const res = await db.query(
@@ -26,7 +28,14 @@ const resolvers = {
                 VALUES ($1, $2, $3, NOW(), TRUE)
                 RETURNING *`, 
                 [username, email, hashedPassword])
-            return res.rows[0]
+            const user = res.rows[0]
+
+            const token = jwt.sign({ userId: user.id }, JWT_SECRET, {expiresIn: '24h' })
+
+            return {
+                token,
+                user,
+            }
         },
         deleteUser: async (parent, { id }) => {
             const res = await db.query('DELETE FROM users WHERE id = $1 RETURNING *', [id])

@@ -5,8 +5,8 @@ const typeDefs = [
     userTypeDefs
 ]
 
-const resolvers = [
-    userResolvers
-]
+const resolvers = {
+    ...userResolvers
+}
 
 module.exports = { typeDefs, resolvers }

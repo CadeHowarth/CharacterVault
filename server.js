@@ -5,7 +5,7 @@ const { expressMiddleware } = require('@as-integrations/express5')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
-const { typeDefs, resolvers } = require('./src/app/graphql/modules')
+const { typeDefs, resolvers } = require('./src/app/graphql/modules/index.js')
 
 async function startApolloServer() {
     const app = express()

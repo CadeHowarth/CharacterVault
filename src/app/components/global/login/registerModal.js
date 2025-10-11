@@ -155,12 +155,9 @@ registerConfirmButton.addEventListener('click', async (event) => {
             return
         }
 
-        const data = result.data.createUser
-
-        console.log('User Creation Successful', data.username)
-        registerModal.classList.add('hidden')
-        modalBackdrop.classList.add('hidden')
-        document.body.classList.remove('modal-open')
+        const { token, user } = result.data.createUser
+        localStorage.setItem('auth_token', token)
+        window.location.reload()
 
     } catch (error) {
         console.error('User Creation failed:', error)
