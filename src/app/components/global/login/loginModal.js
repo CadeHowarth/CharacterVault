@@ -1,26 +1,29 @@
 const loginButton = document.getElementById('login-btn')
-const closeModalButton = document.getElementById('close-btn')
-const loginModal = document.getElementById('login-modal-form')
-const modalContainer = document.getElementById('login-modal')
+const loginModal = document.getElementById('login-modal')
+const registerButton = document.getElementById('register-submit')
+const registerModal = document.getElementById('register-modal')
+const loginSubmitButton = document.getElementById('login-submit')
+const closeLoginButton = document.getElementById('close-btn-login')
+const closeRegButton = document.getElementById('close-btn-reg')
 const modalBackdrop = document.getElementById('modal-backdrop')
 const usernameInput = document.getElementById('username')
 const passwordInput = document.getElementById('password')
+const regUsername = document.getElementById('register-username')
+const emailInput = document.getElementById('register-email')
+const regPassword = document.getElementById('register-password')
+const confPassword = document.getElementById('confirm-password')
 const usernameError = document.getElementById('username-error')
 const passwordError = document.getElementById('password-error')
 
 import { LOGIN_MUTATION } from '../../../graphql/users/mutations/login.js'
 
-loginButton.addEventListener('click', () => {
-    modalContainer.classList.remove('hidden')
-    modalBackdrop.classList.remove('hidden')
-    document.body.classList.add('modal-open')
-})
+loginButton.addEventListener('click', showLoginModal)
 
-closeModalButton.addEventListener('click', () => {
-    loginModal.classList.add('hidden')
-    modalBackdrop.classList.add('hidden')
-    document.body.classList.remove('modal-open')
-})
+registerButton.addEventListener('click', showRegisterModal)
+
+closeLoginButton.addEventListener('click', closeModal)
+
+closeRegButton.addEventListener('click', closeModal)
 
 usernameInput.addEventListener('input', () => {
     if (usernameInput.validity.valid) {
@@ -28,7 +31,7 @@ usernameInput.addEventListener('input', () => {
         usernameError.classList.remove('active')
         usernameInput.classList.remove('invalid')
     } else {
-        showUsernameError()
+        showEmptyError()
     }
 })
 
@@ -38,44 +41,34 @@ passwordInput.addEventListener('input', () => {
         passwordError.classList.remove('active')
         passwordInput.classList.remove('invalid')
     } else {
-        showPasswordError()
+        showEmptyError()
     }
 })
 
-function showUsernameError() {
+function showEmptyError() {
     if (usernameInput.validity.valueMissing) {
         usernameError.innerHTML = 'This field is required (You cannot leave this field blank)'
     } 
     usernameError.classList.add('active')
     usernameInput.classList.add('invalid')
-}
 
-function showPasswordError() {
     if (passwordInput.validity.valueMissing) {
         passwordError.innerHTML = 'This field is required (You cannot leave this field blank)'
-    }
+    } 
     passwordError.classList.add('active')
     passwordInput.classList.add('invalid')
 }
 
-loginModal.addEventListener('submit', async (event) => {
+loginSubmitButton.addEventListener('click', async (event) => {
     event.preventDefault()
 
-    if (!usernameInput.validity.valid) {
-    showUsernameError()
+    if (!usernameInput.validity.valid || !passwordInput.validity.valid) {
+    showEmptyError()
     return
     } 
-    
-    if (!passwordInput.validity.valid) {
-    showPasswordError()
-    return
-    }
 
     const username = usernameInput.value
     const password = passwordInput.value
-
-    usernameError.innerHTML = ''
-    passwordError.innerHTML = ''
 
     try {
         const response = await fetch('/graphql', {
@@ -100,13 +93,38 @@ loginModal.addEventListener('submit', async (event) => {
         localStorage.setItem('auth_token', token)
 
         console.log('Login successful', user.username)
-        modalContainer.classList.add('hidden')
-        modalContainer.style.display = 'none'
+        loginModal.classList.add('hidden')
         modalBackdrop.classList.add('hidden')
         document.body.classList.remove('modal-open')
 
     } catch (error) {
         console.error('Login failed:', error)
-
     }
 })
+
+function showLoginModal() {
+    loginModal.classList.remove('hidden')
+    modalBackdrop.classList.remove('hidden')
+    document.body.classList.add('modal-open')
+}
+
+function showRegisterModal() {
+    loginModal.classList.add('hidden')
+    registerModal.classList.remove('hidden')
+}
+
+function closeModal() {
+    loginModal.classList.add('hidden')
+    registerModal.classList.add('hidden')
+    modalBackdrop.classList.add('hidden')
+
+    usernameInput.value = ''
+    passwordInput.value = ''
+    regUsername.value = ''
+    emailInput.value = ''
+    regPassword.value = ''
+    confPassword.value = ''
+
+    document.body.classList.remove('modal-open')
+
+}

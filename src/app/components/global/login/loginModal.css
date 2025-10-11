@@ -95,14 +95,14 @@
     }
 }
 
-#close-btn {
+.close {
     position: relative;
     right: 25px;
     left: 99%;
     color: var(--secondary-text-color);
 }
 
-#close-btn:hover, #close-btn:focus {
+.close:hover {
     color: var(--hover-color);
     cursor: pointer;
 }

@@ -1,0 +1,25 @@
+#register-modal.hidden {
+    display: none;
+}
+
+.modal-content #register-confirm:hover {
+    filter: brightness(120%);
+}
+
+.modal-content #register-confirm:active {
+    filter: brightness(80%);
+}
+
+.modal-content #register-confirm {
+    border: 3px solid var(--line-color);
+    border-radius: 3em;
+    padding: 20px;
+    width: 300px;
+    margin: auto;
+    margin-top: 10px;
+    background-image: radial-gradient(circle at center, var(--base-btn-color), var(--base-color));
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 16px;
+    font-family: inherit;
+}
