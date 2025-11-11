@@ -86,6 +86,10 @@ loginSubmitButton.addEventListener('click', async (event) => {
 
         if (result.errors) {
             console.error(result.errors)
+            const err = result.errors[0].message
+            usernameError.innerHTML = err
+            usernameError.classList.add('active')
+            usernameInput.classList.add('invalid')
             return
         }
 
@@ -93,9 +97,7 @@ loginSubmitButton.addEventListener('click', async (event) => {
         localStorage.setItem('auth_token', token)
 
         console.log('Login successful', user.username)
-        loginModal.classList.add('hidden')
-        modalBackdrop.classList.add('hidden')
-        document.body.classList.remove('modal-open')
+        window.location.reload()
 
     } catch (error) {
         console.error('Login failed:', error)

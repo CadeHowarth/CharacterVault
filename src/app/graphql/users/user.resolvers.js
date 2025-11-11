@@ -30,7 +30,7 @@ const resolvers = {
                 [username, email, hashedPassword])
             const user = res.rows[0]
 
-            const token = jwt.sign({ userId: user.id }, JWT_SECRET, {expiresIn: '24h' })
+            const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: '24h' })
 
             return {
                 token,
@@ -46,12 +46,12 @@ const resolvers = {
             const user = res.rows[0]
 
             if (!user) {
-                throw new Error('User not found')
+                throw new Error('Username or password is incorrect')
             }
 
             const passwordMatch = await bcrypt.compare(password, user.password_hash)
             if (!passwordMatch) {
-                throw new Error('Invalid password')
+                throw new Error('Username or password is incorrect')
             }
 
             const token = jwt.sign({ userId: user.id }, JWT_SECRET, {expiresIn: '24h' })

@@ -107,14 +107,13 @@ confPassword.addEventListener('input', () => {
 
 emailInput.addEventListener('input', () => {
     if (!emailRegex.test(emailInput.value)) {
-        emailError.innerHTML = `Email is not valid. Please Enter email addres with '@' and '.com'`
+        emailError.innerHTML = `Email is not valid. Please enter valid email address`
         emailError.classList.add('active')
         emailInput.classList.add('invalid') 
     } else {
         regPasswordConfError.innerHTML = ''
     }
 })
-
 
 registerConfirmButton.addEventListener('click', async (event) => {
     event.preventDefault()
@@ -152,6 +151,11 @@ registerConfirmButton.addEventListener('click', async (event) => {
 
         if (result.errors) {
             console.error(result.errors)
+            const err = result.errors[0].message
+            
+            regUsernameError.innerHTML = err
+            regUsernameError.classList.add('active')
+            regUsername.classList.add('invalid')
             return
         }
 
