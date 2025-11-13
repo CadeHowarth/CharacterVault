@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Character Vault - Create VtM v5</title>
+        <link rel="stylesheet" href="../../css/style.css">
+        <link rel="stylesheet" href="page-create-vtmv5-components.css">
+        <script src="../../js/app.js" defer></script>
+        <script src="../../js/pages/create/page-create-vtmv5-logic.js" defer></script>
+    </head>
+    <body>
+        <nav id="sidebar">
+            <ul>
+                <li>
+                    <span class="logo">Character Vault</span>
+                    <button onclick=toggleSidebar()  id="toggle-btn" data-testId="sidebarToggle">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M560-240 320-480l240-240 56 56-184 184 184 184-56 56Z"/></svg>
+                    </button>
+                </li>
+                <li class="active">
+                    <a href="../../../index.html" data-testId="homeBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../browse/page-browse.html" data-testId="dashboardBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M300-80q-58 0-99-41t-41-99v-520q0-58 41-99t99-41h500v600q-25 0-42.5 17.5T740-220q0 25 17.5 42.5T800-160v80H300Zm-60-267q14-7 29-10t31-3h20v-440h-20q-25 0-42.5 17.5T240-740v393Zm160-13h320v-440H400v440Zm-160 13v-453 453Zm60 187h373q-6-14-9.5-28.5T660-220q0-16 3-31t10-29H300q-26 0-43 17.5T240-220q0 26 17 43t43 17Z"/></svg>
+                        <span>Content</span>
+                    </a>
+                </li>
+                <li>
+                    <button onclick=toggleSubMenu(this) class="dropdown-btn" data-testId="createDropdown">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                        <span>Create</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-360 280-560h400L480-360Z"/></svg>
+                    </button>
+                    <ul class="sub-menu">
+                        <div data-testId="createList">
+                            <li><a href="#">Character Sheet</a></li>
+                        </div>
+                    </ul>
+                </li>
+                <li>
+                    <a href="profile.html" data-testId="profileBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Zm0 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q53 0 100-15.5t86-44.5q-39-29-86-44.5T480-280q-53 0-100 15.5T294-220q39 29 86 44.5T480-160Zm0-360q26 0 43-17t17-43q0-26-17-43t-43-17q-26 0-43 17t-17 43q0 26 17 43t43 17Zm0-60Zm0 360Z"/></svg>
+                        <span>Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <button class="login" id="login-btn" data-testId="loginBtn">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-120v-80h280v-560H480v-80h280q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H480Zm-80-160-55-58 102-102H120v-80h327L345-622l55-58 200 200-200 200Z"/></svg>
+                        <span>Login</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <div class="container">
+                <h1 class="heading content">
+                    Vampire: the Masquerade
+                </h1>
+                <h2>
+                    Character Builder
+                </h2>
+            </div>
+            <div class="creator-wrapper">
+                <aside class="creator-legend" id="creatorLegend">
+                    <div class="legend-step active" data-step="1" onclick="navigateToStep(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M234-276q51-39 114-61.5T480-360q69 0 132 22.5T726-276q35-41 54.5-93T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 59 19.5 111t54.5 93Zm246-164q-59 0-99.5-40.5T340-580q0-59 40.5-99.5T480-720q59 0 99.5 40.5T620-580q0 59-40.5 99.5T480-440Z"/>
+                        </svg>
+                        <span>1</span>
+                    </div>
+                    <div class="legend-step" data-step="2" onclick="navigateToStep(2)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                        </svg>
+                        <span>2</span>
+                    </div>
+                    <div class="legend-step" data-step="3" onclick="navigateToStep(3)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M480-120 200-272v-240L480-360l280-152v240L480-120Zm0-332L274-480l206-148 206 148-206 148Zm0 241 224-116v-168L480-360 256-455v168l224 116Zm0-241Zm0 241Zm0 0Z"/>
+                        </svg>
+                        <span>3</span>
+                    </div>
+                    <div class="legend-step" data-step="4" onclick="navigateToStep(4)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3l-44 44q-11-2-22-3t-22-1q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220q109 0 184.5-75.5T740-480q0-11-1-22t-3-22l44-44q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm-56-216 56-57 56 57 56-56-57-56 57-56-56-56-56 56-56-56-57 56 57 56-57 56 56 56Zm370 246-56-56 56-56-56-56 56-56 56 56-56 56 56 56-56 56Z"/>
+                        </svg>
+                        <span>4</span>
+                    </div>
+                    <div class="legend-step" data-step="5" onclick="navigateToStep(5)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q150 0 255 105t105 255q0 150-105 255T480-120Zm0-80q109 0 184.5-75.5T740-480q0-109-75.5-184.5T480-740q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220Zm0-60q-75 0-127.5-52.5T300-480q0-75 52.5-127.5T480-660q75 0 127.5 52.5T660-480q0 75-52.5 127.5T480-300Z"/>
+                        </svg>
+                        <span>5</span>
+                    </div>
+                </aside>
+                <div class="container create" id="createContainer" data-background-image="../../content/images/vtmv5_container_background.jpg">
+                    <!-- Step 1: Character Name -->
+                    <div class="creator-box active" id="step-1" data-step="1">
+                        <div class="creator-box-header" onclick="toggleBox(1)">
+                            <h4>Who is Your Kindred?</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <div class="character-inputs" id="character-inputs-container">
+                                <label class="image-upload-label">
+                                    <div class="image-upload-container">
+                                        <input type="file" accept="image/*" id="characterImage" name="characterImage" style="display: none;">
+                                        <div class="image-preview" id="imagePreview">
+                                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90 120-60-80-100 120Zm-40 80v-560 560Z"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label>
+                                    <b>Character Name</b>
+                                    <input type="text" placeholder="What is your name?" data-testId="charNameInput" name="name" id="characterName" required>
+                                    <span class="error" aria-live="polite" id="name-error"></span>
+                                </label>
+                                <label>
+                                    <b>Character Age</b>
+                                    <select id="characterAge" name="characterAge" required>
+                                        <option value="">Select Age</option>
+                                        <option value="neonate">Childer (embraced within the last 15 years)</option>
+                                        <option value="ancilla">Neonate (embraced 15 - 50 years ago)</option>
+                                        <option value="elder">Ancilla (embraced 50 - 100 years ago)</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(1)">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Clan Picker -->
+                    <div class="creator-box" id="step-2" data-step="2">
+                        <div class="creator-box-header" onclick="toggleBox(2)">
+                            <h4>Choose Your Clan</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <div class="clan-grid" id="clanGrid">
+                                <div class="clan-option" data-clan="brujah">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Brujah</span>
+                                </div>
+                                <div class="clan-option" data-clan="gangrel">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Gangrel</span>
+                                </div>
+                                <div class="clan-option" data-clan="malkavian">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Malkavian</span>
+                                </div>
+                                <div class="clan-option" data-clan="nosferatu">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Nosferatu</span>
+                                </div>
+                                <div class="clan-option" data-clan="toreador">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Toreador</span>
+                                </div>
+                                <div class="clan-option" data-clan="tremere">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Tremere</span>
+                                </div>
+                                <div class="clan-option" data-clan="ventrue">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Ventrue</span>
+                                </div>
+                                <div class="clan-option" data-clan="banu-haqim">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Banu Haqim</span>
+                                </div>
+                                <div class="clan-option" data-clan="caitiff">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Caitiff</span>
+                                </div>
+                                <div class="clan-option" data-clan="hecata">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Hecata</span>
+                                </div>
+                                <div class="clan-option" data-clan="lasombra">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Lasombra</span>
+                                </div>
+                                <div class="clan-option" data-clan="ministry">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Ministry</span>
+                                </div>
+                                <div class="clan-option" data-clan="ravnos">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Ravnos</span>
+                                </div>
+                                <div class="clan-option" data-clan="tzimisce">
+                                    <div class="clan-image">
+                                        <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
+                                            <path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z"/>
+                                        </svg>
+                                    </div>
+                                    <span class="clan-name">Tzimisce</span>
+                                </div>
+                            </div>
+                            <div class="clan-details" id="clanDetails" style="display: none;">
+                                <h5 id="selectedClanName"></h5>
+                                <p id="clanInfo" rows="6"></p>
+                            </div>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(2)" id="step2Submit" style="display: none;">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Attributes -->
+                    <div class="creator-box" id="step-3" data-step="3">
+                        <div class="creator-box-header" onclick="toggleBox(3)">
+                            <h4>Attributes, Skills & Specialties</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <!-- Attributes Section -->
+                            <div class="attributes-section">
+                                <h5>Attributes</h5>
+                                <div class="attributes-container">
+                                    <div class="attribute-category">
+                                        <h6>Physical</h6>
+                                        <div class="attribute-grid">
+                                            <div class="attribute-item">
+                                                <label>Strength</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="strength">
+                                                    <div class="tracker-buttons" id="dotTracker">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Dexterity</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="dexterity">
+                                                    <div class="tracker-buttons" id="dotTracker">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Stamina</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="stamina">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="attribute-category">
+                                        <h6>Social</h6>
+                                        <div class="attribute-grid">
+                                            <div class="attribute-item">
+                                                <label>Charisma</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="charisma">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Manipulation</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="manipulation">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Composure</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="composure">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="attribute-category">
+                                        <h6>Mental</h6>
+                                        <div class="attribute-grid">
+                                            <div class="attribute-item">
+                                                <label>Intelligence</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="intelligence">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Wits</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="wits">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="attribute-item">
+                                                <label>Resolve</label>
+                                                <div class="tracker-button-group" data-type="attribute" data-name="resolve">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Skills Section -->
+                            <div class="skills-section">
+                                <h5>Skills</h5>
+                                <div class="skills-container">
+                                    <div class="skill-category">
+                                        <h6>Physical</h6>
+                                        <div class="skill-grid">
+                                            <div class="skill-item">
+                                                <label>Athletics</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="athletics">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Brawl</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="brawl">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Craft</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="craft">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Drive</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="drive">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Firearms</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="firearms">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Larceny</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="larceny">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Melee</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="melee">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Stealth</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="stealth">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Survival</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="survival">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h6>Social</h6>
+                                        <div class="skill-grid">
+                                            <div class="skill-item">
+                                                <label>Animal Ken</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="animal-ken">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Etiquette</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="etiquette">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Insight</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="insight">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Intimidation</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="intimidation">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Leadership</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="leadership">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Performance</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="performance">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Persuasion</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="persuasion">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Streetwise</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="streetwise">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Subterfuge</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="subterfuge">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="skill-category">
+                                        <h6>Mental</h6>
+                                        <div class="skill-grid">
+                                            <div class="skill-item">
+                                                <label>Academics</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="academics">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Awareness</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="awareness">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Finance</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="finance">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Investigation</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="investigation">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Medicine</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="medicine">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Occult</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="occult">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Politics</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="politics">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Science</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="science">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="skill-item">
+                                                <label>Technology</label>
+                                                <div class="tracker-button-group" data-type="skill" data-name="technology">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Specialties Section -->
+                            <div class="specialties-section">
+                                <h5>Specialties</h5>
+                                <div class="specialties-container" id="specialtiesContainer">
+                                    <div class="specialty-item">
+                                        <select class="specialty-skill-select">
+                                            <option value="">Select Skill</option>
+                                            <option value="athletics">Athletics</option>
+                                            <option value="brawl">Brawl</option>
+                                            <option value="craft">Craft</option>
+                                            <option value="drive">Drive</option>
+                                            <option value="firearms">Firearms</option>
+                                            <option value="larceny">Larceny</option>
+                                            <option value="melee">Melee</option>
+                                            <option value="stealth">Stealth</option>
+                                            <option value="survival">Survival</option>
+                                            <option value="animal-ken">Animal Ken</option>
+                                            <option value="etiquette">Etiquette</option>
+                                            <option value="insight">Insight</option>
+                                            <option value="intimidation">Intimidation</option>
+                                            <option value="leadership">Leadership</option>
+                                            <option value="performance">Performance</option>
+                                            <option value="persuasion">Persuasion</option>
+                                            <option value="streetwise">Streetwise</option>
+                                            <option value="subterfuge">Subterfuge</option>
+                                            <option value="academics">Academics</option>
+                                            <option value="awareness">Awareness</option>
+                                            <option value="finance">Finance</option>
+                                            <option value="investigation">Investigation</option>
+                                            <option value="medicine">Medicine</option>
+                                            <option value="occult">Occult</option>
+                                            <option value="politics">Politics</option>
+                                            <option value="science">Science</option>
+                                            <option value="technology">Technology</option>
+                                        </select>
+                                        <input type="text" placeholder="Specialty name" class="specialty-name-input">
+                                    </div>
+                                </div>
+                                <button type="button" class="add-specialty-btn" onclick="addSpecialty()">+ Add Specialty</button>
+                            </div>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(3)">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Disciplines -->
+                    <div class="creator-box" id="step-4" data-step="4">
+                        <div class="creator-box-header" onclick="toggleBox(4)">
+                            <h4>Disciplines</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <div class="disciplines-container" id="disciplinesContainer">
+                                <div class="discipline-item">
+                                    <label>Animalism</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="animalism">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Auspex</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="auspex">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Blood Sorcery</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="blood-sorcery">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Celerity</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="celerity">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Dominate</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="dominate">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Fortitude</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="fortitude">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Obfuscate</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="obfuscate">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Potence</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="potence">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Presence</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="presence">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Protean</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="protean">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Oblivion</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="oblivion">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Thin-Blood Alchemy</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="thin-blood-alchemy">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                                <div class="discipline-item">
+                                    <label>Blood Resonance</label>
+                                    <div class="tracker-button-group" data-type="discipline" data-name="blood-resonance">
+                                        <div class="tracker-buttons">
+                                        </div>
+                                        <button type="button" class="decrement-btn">−</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(4)">Continue</button>
+                        </div>
+                    </div>
+
+                    <!-- Step 5: Predator Type -->
+                    <div class="creator-box" id="step-5" data-step="5">
+                        <div class="creator-box-header" onclick="toggleBox(5)">
+                            <h4>Predator Type</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <div class="predator-grid" id="predatorGrid">
+                                <div class="predator-option" data-predator="alleycat">
+                                    <span class="predator-name">Alleycat</span>
+                                </div>
+                                <div class="predator-option" data-predator="bagger">
+                                    <span class="predator-name">Bagger</span>
+                                </div>
+                                <div class="predator-option" data-predator="blood-leech">
+                                    <span class="predator-name">Blood Leech</span>
+                                </div>
+                                <div class="predator-option" data-predator="cleaver">
+                                    <span class="predator-name">Cleaver</span>
+                                </div>
+                                <div class="predator-option" data-predator="consensualist">
+                                    <span class="predator-name">Consensualist</span>
+                                </div>
+                                <div class="predator-option" data-predator="farmer">
+                                    <span class="predator-name">Farmer</span>
+                                </div>
+                                <div class="predator-option" data-predator="osiris">
+                                    <span class="predator-name">Osiris</span>
+                                </div>
+                                <div class="predator-option" data-predator="sandman">
+                                    <span class="predator-name">Sandman</span>
+                                </div>
+                                <div class="predator-option" data-predator="scene-queen">
+                                    <span class="predator-name">Scene Queen</span>
+                                </div>
+                                <div class="predator-option" data-predator="siren">
+                                    <span class="predator-name">Siren</span>
+                                </div>
+                            </div>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(5)">Complete Character</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

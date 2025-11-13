@@ -1,0 +1,22 @@
+.grid-card-browse {
+    /* background-image: url('../../content/images/vtmv5.jpg');
+    background-size: cover;
+    background-blend-mode: overlay; */
+    background-color: var(--base-color);
+    border-radius: .25em;
+    padding: 30px;
+    width: 250px;
+    text-decoration: none;
+    transition: filter 300ms ease, transform 300ms ease;
+}
+.card-title-browse {
+    text-align: center;
+}
+.grid-card-browse span {
+    color: var(--secondary-text-color);
+    font-size: 15px;
+}
+.grid-card-browse:hover {
+    transform: translateY(-5px);
+    filter: brightness(150%);
+}
