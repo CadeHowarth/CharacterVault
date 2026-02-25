@@ -1,11 +1,14 @@
-const express = require('express')
-const path = require('path')
-const { ApolloServer } = require('@apollo/server')
-const { expressMiddleware } = require('@as-integrations/express5')
-const cors = require('cors')
-const bodyParser = require('body-parser')
+import express from 'express'
+import path from 'path'
+import { fileURLToPath } from 'url'
+import { ApolloServer } from '@apollo/server'
+import { expressMiddleware } from '@as-integrations/express5'
+import cors from 'cors'
+import bodyParser from 'body-parser'
 
-const { typeDefs, resolvers } = require('./src/app/graphql/modules/index.js')
+import { typeDefs, resolvers } from './src/app/graphql/modules/index.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function startApolloServer() {
     const app = express()

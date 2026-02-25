@@ -1,6 +1,7 @@
 :root {
     --vtm-base-color: #181f25;
     --vtm-line-color: #cc0001;
+    --vtm-line-color-secondary: #5d0000;
     --vtm-hover-color: #d8eeff;
     --vtm-text-color: #fcffff;
     --vtm-accent-color: #0f1213;
@@ -38,12 +39,16 @@ body {
 .container.create ul {
     list-style-type: none;
 }
+#character-inputs-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
 
 #character-inputs-container input {
-    padding: 20px;
-    width: 95%;
-    margin-top: 10px;
-    border: 1px solid var(--vtm-line-color);
+    padding: 17px;
+    width: 90%;
+    border: 1px solid var(--vtm-base-color);
     border-radius: 0.2em;
     color: var(--text-color);
     background-color: var(--vtm-accent-color);
@@ -55,7 +60,7 @@ body {
 .creator-wrapper {
     display: flex;
     gap: 20px;
-    max-width: 1200px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -117,7 +122,7 @@ body {
     display: grid;
     grid-template-rows: auto 0fr;
     transition: grid-template-rows 300ms ease-in-out;
-    border: 1px solid var(--vtm-line-color);
+    border: 1px solid var(--vtm-line-color-secondary);
     border-radius: 4px;
     background-color: rgba(22, 0, 0, 0.5);
     margin-bottom: 15px;
@@ -164,6 +169,8 @@ body {
 }
 
 .creator-box-content {
+    display: flex;
+    flex-direction: column;
     padding: 0 20px 20px 20px;
     overflow: hidden;
     min-height: 0;
@@ -182,14 +189,8 @@ body {
 /* Character Inputs */
 .character-inputs {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
-}
-
-.character-inputs label {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
 }
 
 .character-inputs label b {
@@ -199,8 +200,8 @@ body {
 
 .character-inputs input,
 .character-inputs select {
-    padding: 15px;
-    border: 1px solid var(--vtm-line-color);
+    padding: 18px;
+    border: 1px solid var(--vtm-base-color);
     border-radius: 0.2em;
     color: var(--vtm-text-color);
     background-color: var(--vtm-accent-color);
@@ -217,12 +218,19 @@ body {
     color: var(--vtm-text-color);
 }
 
+.char-input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 /* Image Upload */
 .image-upload-label {
     display: flex;
     flex-direction: column;
     text-align: center;
     gap: 8px;
+    grid-column: 1 / -1;
 }
 
 .image-upload-container {
@@ -273,7 +281,7 @@ body {
     align-items: center;
     gap: 10px;
     padding: 15px;
-    border: 1px solid var(--vtm-line-color);
+    border: 1px solid var(--vtm-base-color);
     border-radius: 4px;
     background-color: var(--vtm-accent-color);
     cursor: pointer;
@@ -485,7 +493,7 @@ body {
 .specialty-name-input {
     flex: 1;
     padding: 10px;
-    border: 1px solid var(--vtm-line-color);
+    border: 1px solid var(--vtm-base-color);
     border-radius: 4px;
     background-color: var(--vtm-accent-color);
     color: var(--vtm-text-color);
@@ -513,7 +521,7 @@ body {
 
 .add-specialty-btn {
     padding: 12px 20px;
-    border: 1px solid var(--vtm-line-color);
+    border: 1px solid var(--vtm-base-color);
     border-radius: 4px;
     background-color: var(--vtm-base-btn-color);
     color: var(--vtm-text-color);
@@ -600,10 +608,10 @@ body {
 
 /* Step Submit Button */
 .step-submit-btn {
-    width: 100%;
+    width: 25%;
     padding: 15px 30px;
-    margin-top: 20px;
-    border: 1px solid var(--vtm-line-color);
+    margin: 20px auto;
+    border: 1px solid var(--vtm-base-color);
     border-radius: 4px;
     background-color: var(--vtm-base-btn-color);
     color: var(--vtm-text-color);
@@ -616,6 +624,62 @@ body {
 .step-submit-btn:hover {
     background-color: rgba(29, 89, 147, 0.8);
     border-color: var(--vtm-base-btn-color);
+}
+
+/* Description Container */
+.description-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+    min-width: 0;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+
+.description-box {
+    border: 1px solid var(--vtm-line-color);
+    border-radius: 0em;
+    background-color: rgba(22, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    min-width: 0;
+}
+
+.description-box h5 {
+    color: var(--vtm-text-color);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin: 0;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--vtm-line-color);
+    padding-bottom: 10px;
+}
+
+.description-box p {
+    color: var(--vtm-secondary-text-color);
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.purpose-description {
+    background-color: rgba(15, 18, 19, 0.7);
+}
+
+.selection-description {
+    flex: 1;
+    background-color: rgba(15, 18, 19, 0.7);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    max-height: 800px;
 }
 
 /* Responsive adjustments */
@@ -632,6 +696,11 @@ body {
 
     .container.create {
         width: 100%;
+    }
+
+    .description-container {
+        width: 100%;
+        min-width: 100%;
     }
 
     .clan-grid,

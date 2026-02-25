@@ -1,0 +1,46 @@
+{
+    "asideText" : {
+        "description": {
+            "header": {
+                "1": "Basic Information",
+                "2": "Clan Selection",
+                "3": "Attributes",
+                "4": "Disciplines",
+                "5": "Predator Type"
+            },
+            "content": {
+                "1": "Let's start with the basics. Enter your character's name and select their generation.",
+                "2": "Choose a clan for your character. Each clan has its own unique traits and abilities.",
+                "3": "Distribute points among your character's attributes. These will determine their physical, social, and mental capabilities.",
+                "4": "Select the disciplines your character has access to. These are supernatural powers that can be used in various ways during gameplay.",
+                "5": "Choose a predator type for your character. This will influence their feeding habits and how they interact with kine."
+            }
+        },
+        "selection": {
+            "content": {
+                "strength": {
+                    "header": "Strength",
+                    "description": "Strength represents the character's ability to deadlift, how hard they hit, and how much force they can exert with their body.",
+                    "levels": [
+                    "● They can easily crush a beer can. (Deadlift 20kg)",
+                    "● ● They are average physically. (Deadlift 45kg)",
+                    "● ● ● They might be able to break down a wooden door. (Deadlift 115kg)",
+                    "● ● ● ● A prime physical specimen. (Deadlift 180kg)",
+                    "● ● ● ● ● Break open a metal door or tear open a chain-link fence. (Deadlift 250kg)"
+                    ]
+                },
+                "dexterity": {
+                    "header": "Dexterity",
+                    "description": "Dexterity represents how agile a character is, how graceful they can be, or how nimble their fingers are.",
+                    "levels": [
+                        "● They can run but struggle with balance and dodging.",
+                        "● A solid sprint and sometimes can appear graceful.",
+                        "● ● ● Impressive agility and their coordination is equal to a trained amateur.",
+                        "● ● ● ● They move in a way few humans can and could excel at acrobatics.",
+                        "● ● ● ● ● Almost superhuman movements that are liquid and hypnotic."
+                    ]
+                }
+            }
+        }
+    }
+}

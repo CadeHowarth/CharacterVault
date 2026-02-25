@@ -1,8 +1,9 @@
-const db = require('../../../../db')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
+import db from '../../../../db.js'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
-require('dotenv').config()
+dotenv.config()
 
 const JWT_SECRET = 'JWT_SECRET_KEY'
 
@@ -64,4 +65,4 @@ const resolvers = {
     }
 }
 
-module.exports = resolvers
+export { resolvers }

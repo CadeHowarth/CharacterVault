@@ -1,12 +1,12 @@
-const userTypeDefs = require('../users/user.schema.js')
-const userResolvers = require('../users/user.resolvers.js')
+import { typeDefs as userTypeDefs } from '../users/user.schema.js'
+import { resolvers as userResolvers } from '../users/user.resolvers.js'
 
 const typeDefs = [
     userTypeDefs
 ]
 
-const resolvers = {
-    ...userResolvers
-}
+const resolvers = [
+    userResolvers
+]
 
-module.exports = { typeDefs, resolvers }
+export { typeDefs, resolvers }

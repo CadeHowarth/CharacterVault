@@ -1,0 +1,49 @@
+{
+    "clanDescriptions": {
+        "brujah": {
+            "description": "Once philosopher-kings of an ancient civilization, but now rebels and rogues with a fearsome inclination toward frenzy."
+        },
+        "gangrel": {
+            "description": "Bestial and untamed, often coming to resemble the animals over which they demonstrate mastery."
+        },
+        "malkavian": {
+            "description": "A clan fractured by madness, each member irrevocably suffering under the yoke of insanity."
+        },
+        "nosferatu": {
+            "description": "Hideously disfigured by the Embrace, so they keep to the sewers shadows and traffic in the secrets they collect."
+        },
+        "toreador": {
+            "description": "Cainites that enjoy every sensual pleasure the world has to offer, idolizing physical beauty and the adoration of their thralls."
+        },
+        "tremere": {
+            "description": "Vampiric sorcerers that wield the supernatural power of their past as a hermetic house, though they became vampires through treachery and artifice."
+        },
+        "ventrue": {
+            "description": "Observe the noblesse oblige of vampire society, though their entitlement and greed encourages them to seek ever more at the expense of others."
+        },
+        "banu-haqim": {
+            "description": "Silent masters of assassination, killing for hire and collecting blood for rituals to bring them closer to their progenitor."
+        },
+        "caitiff": {
+            "description": "The most common term used by kindred to describe a vampire of an unknown clan, or of no clan at all."
+        },
+        "hecata": {
+            "description": "An insular, extended family of vampires who practice the art of commanding the dead while commanding global finances"
+        },
+        "lasombra": {
+            "description": "Proud nobles who command the very essence of darkness and shadow — to the point of worshipping it, some say."
+        },
+        "ministry": {
+            "description": "A religious movement that evangelizes the example of a chthonic god, while seeking out the world’s secret places and protecting ancient artifacts."
+        },
+        "ravnos": {
+            "description": "Nomads and tricksters who can force the mind to see what isn’t there, though they are slaves to the vices they indulge in."
+        },
+        "tzimisce": {
+            "description": "Eldritch Old World lords who have little in common with the mortal world and can manipulate flesh and bone at a whim."
+        },
+        "salubri": {
+            "description": "Their general few numbers grant credibility to the rumors that they are only composed of seven vampires at any time, and that these modern Salubri are fully committed to the search for Golconda – enacting a bloody ritual when they achieve that state or despair of ever doing so."
+        }
+    }
+}

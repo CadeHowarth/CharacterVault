@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="../../css/style.css">
         <link rel="stylesheet" href="page-create-vtmv5-components.css">
         <script src="../../js/app.js" defer></script>
-        <script src="../../js/pages/create/page-create-vtmv5-logic.js" defer></script>
+        <script type="module" src="../../js/pages/create/vtmv5/page-create-vtmv5-logic.js" defer></script>
+        <script type="module" src="../../js/pages/create/vtmv5/trackerModule.js" defer></script>
+        <script type="module" src="../../js/pages/create/vtmv5/dataValidation.js" defer></script>
+        <script type="module" src="../../js/pages/create/vtmv5/helpers.js" defer></script>
     </head>
     <body>
         <nav id="sidebar">
@@ -109,7 +112,7 @@
                         </div>
                         <div class="creator-box-content">
                             <div class="character-inputs" id="character-inputs-container">
-                                <label class="image-upload-label">
+                                <!-- <label class="image-upload-label">
                                     <div class="image-upload-container">
                                         <input type="file" accept="image/*" id="characterImage" name="characterImage" style="display: none;">
                                         <div class="image-preview" id="imagePreview">
@@ -118,15 +121,15 @@
                                             </svg>
                                         </div>
                                     </div>
-                                </label>
-                                <label>
+                                </label> -->
+                                <label class="char-input">
                                     <b>Character Name</b>
                                     <input type="text" placeholder="What is your name?" data-testId="charNameInput" name="name" id="characterName" required>
                                     <span class="error" aria-live="polite" id="name-error"></span>
                                 </label>
-                                <label>
+                                <label class="char-input">
                                     <b>Character Age</b>
-                                    <select id="characterAge" name="characterAge" required>
+                                    <select id="characterAge" name="characterAge" class="char-input" required>
                                         <option value="">Select Age</option>
                                         <option value="neonate">Childer (embraced within the last 15 years)</option>
                                         <option value="ancilla">Neonate (embraced 15 - 50 years ago)</option>
@@ -818,6 +821,18 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Description Container -->
+                <aside class="description-container" id="descriptionContainer">
+                    <div class="description-box purpose-description">
+                        <h5 id="purposeHeader">Welcome, Kindred.</h5>
+                        <span id="purposeText">Welcome to the world of Vampire: The Masquerade 5th Edition character creation! This process will guide you through the steps of creating your own unique vampire character, from choosing your clan and attributes to selecting your disciplines and background. Let's begin our journey into the night together.</span>
+                    </div>
+                    <div class="description-box selection-description">
+                        <h5 id="selectionHeader">Steps</h5>
+                        <span id="selectionText">Click on steps to see descriptions for each step of character creation.</span>
+                    </div>
+                </aside>
             </div>
         </main>
     </body>

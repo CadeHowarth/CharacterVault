@@ -1,0 +1,19 @@
+{
+    "clanDisciplines": {
+        "brujah": ["potence", "presence", "celerity"],
+        "gangrel": ["animalism", "fortitude", "protean"],
+        "malkavian": ["auspex", "dominate", "obfuscate"],
+        "nosferatu": ["animalism", "obfuscate", "potence"],
+        "toreador": ["auspex", "celerity", "presence"],
+        "tremere": ["auspex", "blood-sorcery", "dominate"],
+        "ventrue": ["dominate", "fortitude", "presence"],
+        "banu-haqim": ["blood-sorcery", "celerity", "obfuscate"],
+        "caitiff": ["potence", "presence", "celerity", "obfuscate", "blood-sorcery", "auspex", "fortitude", "protean", "dominate", "oblivion", "animalism", "blood-resonance", "thin-blood-alchemy"],
+        "hecata": ["auspex", "fortitude", "oblivion"],
+        "lasombra": ["dominate", "oblivion", "potence"],
+        "ministry": ["obfuscate", "presence", "protean"],
+        "ravnos": ["animalism", "obfuscate", "presence"],
+        "tzimisce": ["animalism", "auspex", "protean"],
+        "salubri": ["auspex", "dominate", "fortitude"]
+    }
+}
