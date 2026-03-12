@@ -45,12 +45,13 @@ body {
     gap: 20px;
 }
 
-#character-inputs-container input {
+#character-inputs-container input,
+#character-inputs-container select {
     padding: 17px;
     width: 90%;
     border: 1px solid var(--vtm-base-color);
     border-radius: 0.2em;
-    color: var(--text-color);
+    color: var(--vtm-text-color);
     background-color: var(--vtm-accent-color);
     font-size: 18px;
     font-weight: 400;
@@ -345,13 +346,15 @@ body {
 /* Attributes Section */
 .attributes-section,
 .skills-section,
-.specialties-section {
+.specialties-section,
+.advantages-section {
     margin-bottom: 30px;
 }
 
 .attributes-section h5,
 .skills-section h5,
-.specialties-section h5 {
+.specialties-section h5,
+.advantages-section h5 {
     color: var(--vtm-text-color);
     font-size: 20px;
     margin-bottom: 15px;
@@ -359,14 +362,16 @@ body {
 }
 
 .attributes-container,
-.skills-container {
+.skills-container,
+.advantages-container {
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
 
 .attribute-category,
-.skill-category {
+.skill-category,
+.advantage-category {
     padding: 15px;
     border-radius: 4px;
     background-color: rgba(22, 0, 0, 0.3);
@@ -376,7 +381,8 @@ body {
 }
 
 .attribute-category h6,
-.skill-category h6 {
+.skill-category h6,
+.advantage-category h6 {
     color: var(--vtm-text-color);
     font-size: 18px;
     margin-bottom: 15px;
@@ -386,7 +392,8 @@ body {
 }
 
 .attribute-grid,
-.skill-grid {
+.skill-grid,
+.advantage-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
@@ -397,7 +404,8 @@ body {
 }
 
 .attribute-item,
-.skill-item {
+.skill-item,
+.advantage-item {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -409,7 +417,8 @@ body {
 }
 
 .attribute-item label,
-.skill-item label {
+.skill-item label,
+.advantage-item label {
     color: var(--vtm-text-color);
     font-size: 14px;
     font-weight: 500;

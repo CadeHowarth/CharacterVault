@@ -1,6 +1,6 @@
 import { DATA_PATHS, SELECTORS, SKILLS } from './dataLoader.js'
 import { validateStep } from './dataValidation.js'
-import { setupOptionGroup, updateDisciplinesForClan, updateDescriptionsForClan, updateAsideText, updateLegendStep, closeAllBoxes, openBox, initData, updateSelectionText, dataOptionsListener } from './helpers.js'
+import { setupOptionGroup, updateDisciplinesForClan, updateDescriptionsForClan, updateAsideText, updateLegendStep, closeAllBoxes, openBox, initData, dataOptionsListener } from './helpers.js'
 import { initializeTracker } from './trackerModule.js'
 
 let currentStep = 1
@@ -16,7 +16,9 @@ function loadData() {
     ]).then(([configDescriptions, configDisciplines, configBanes, configDescBox]) => {
         initData({ configDescriptions, configDisciplines, configBanes, configDescBox })
     })
-}loadData()
+}
+
+loadData()
 
 document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById(SELECTORS.createContainer)
@@ -32,9 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Tracker initialization on page load
-    trackers.forEach(tracker => {
-        initializeTracker(tracker)
-    })
+    if (trackers) {
+        trackers.forEach(tracker => {
+            initializeTracker(tracker)
+        })
+    }
 })
 
 // ====== STATE MANAGEMENT & UTILITY FUNCTIONS ======

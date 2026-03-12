@@ -27,7 +27,7 @@
 }
 
 .modal-content .modal-container{
-    display: grid flex;
+    display: grid;
     background-color: var(--accent-color);
 }
 
@@ -82,17 +82,17 @@
     position: relative;
     gap: 60%;
     margin-top: 6px;
+}
 
-    #forgot-btn a span {
-        text-decoration: none;
-        color: var(--secondary-text-color);
-    }
+.modal-content #links-container #forgot-btn a span {
+    text-decoration: none;
+    color: var(--secondary-text-color);
+}
 
-    #remember-checkbox {
-        border: 1px solid var(--line-color);
-        border-radius: 3em;
-        color: var(--base-color);
-    }
+.modal-content #links-container #remember-checkbox {
+    border: 1px solid var(--line-color);
+    border-radius: 3em;
+    color: var(--base-color);
 }
 
 /* Need to set this position to absolute so it does not overflow the body page context and cause the sidebar to switch right when closing */

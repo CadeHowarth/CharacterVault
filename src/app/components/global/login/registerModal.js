@@ -14,85 +14,29 @@ import { REGISTER_MUTATION } from '../../../graphql/users/mutations/createUser.j
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-regUsername.addEventListener('input', () => {
-    if (regUsername.validity.valid) {
-        regUsernameError.innerHTML = ''
-        regUsernameError.classList.remove('active')
-        regUsername.classList.remove('invalid')
-    } else {
-        showEmptyError()
-    }
-})
+loginEmpty(confPassword, regPasswordConfError)
+loginEmpty(emailInput, emailError)
+loginEmpty(regPassword, regPasswordError)
+loginEmpty(regUsername, regUsernameError)
 
-regPassword.addEventListener('input', () => {
-    if (regPassword.validity.valid) {
-        regPasswordError.innerHTML = ''
-        regPasswordError.classList.remove('active')
-        regPassword.classList.remove('invalid')
-    } else {
-        showEmptyError()
+function showEmptyError(selector, error) {
+    if (selector.validity.valueMissing) {
+        error.innerHTML = 'This field is required (You cannot leave this field blank)'
+        error.classList.add('active')
+        selector.classList.add('invalid')
     }
-})
+}
 
-emailInput.addEventListener('input', () => {
-    if (emailInput.validity.valid) {
-        emailError.innerHTML = ''
-        emailError.classList.remove('active')
-        emailInput.classList.remove('invalid')
-    } else {
-        showEmptyError()
-    }
-})
-
-confPassword.addEventListener('input', () => {
-    if (confPassword.validity.valid) {
-        regPasswordConfError.innerHTML = ''
-        regPasswordConfError.classList.remove('active')
-        confPassword.classList.remove('invalid')
-    } else {
-        showEmptyError()
-    }
-})
-function showEmptyError() {
-    if (regUsername.validity.valueMissing) {
-        regUsernameError.innerHTML = 'This field is required (You cannot leave this field blank)'
-        regUsernameError.classList.add('active')
-        regUsername.classList.add('invalid')
-    } else {
-        regUsernameError.innerHTML = ''
-        regUsernameError.classList.remove('active')
-        regUsername.classList.remove('invalid')
-    }
-
-    if (regPassword.validity.valueMissing) {
-        regPasswordError.innerHTML = 'This field is required (You cannot leave this field blank)'
-        regPasswordError.classList.add('active')
-        regPassword.classList.add('invalid') 
-    } else {
-        regPasswordError.innerHTML = ''
-        regPasswordError.classList.remove('active')
-        regPassword.classList.remove('invalid') 
-    }
-
-    if (emailInput.validity.valueMissing) {
-        emailError.innerHTML = 'This field is required (You cannot leave this field blank)'
-        emailError.classList.add('active')
-        emailInput.classList.add('invalid') 
-    } else {
-        emailError.innerHTML = ''
-        emailError.classList.remove('active')
-        emailInput.classList.remove('invalid')  
-    }
-
-    if (confPassword.validity.valueMissing) {
-        regPasswordConfError.innerHTML = 'This field is required (You cannot leave this field blank)'
-        regPasswordConfError.classList.add('active')
-        confPassword.classList.add('invalid')
-    } else {
-        regPasswordConfError.innerHTML = ''
-        regPasswordConfError.classList.remove('active')
-        confPassword.classList.remove('invalid')
-    }
+function loginEmpty(selector, error) {
+    selector.addEventListener('input', () => {
+        if (selector.validity.valid) {
+            error.innerHTML = ''
+            error.classList.remove('active')
+            selector.classList.remove('invalid')
+        } else {
+            showEmptyError(selector, error)
+        }
+    })
 }
 
 confPassword.addEventListener('input', () => {
@@ -119,7 +63,7 @@ registerConfirmButton.addEventListener('click', async (event) => {
     event.preventDefault()
 
     if (!regUsername.validity.valid || !regPassword.validity.valid || !emailInput.validity.valid || !confPassword.validity.valid) {
-    showEmptyError()
+    showEmptyError(regUsername, regUsernameError)
     return
     } else if (confPassword.value !== regPassword.value) {
         return false

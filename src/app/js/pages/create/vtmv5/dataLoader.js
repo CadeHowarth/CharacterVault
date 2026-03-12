@@ -1,8 +1,8 @@
 const DATA_PATHS = {
-    descriptions: '../../content/data/vtmv5/descriptions.json',
-    disciplines: '../../content/data/vtmv5/disciplines.json',
-    banes: '../../content/data/vtmv5/banes.json',
-    descBox: '../../content/data/vtmv5/descBox.json'
+    descriptions: '../../../app/content/data/vtmv5/descriptions.json',
+    disciplines: '../../../app/content/data/vtmv5/disciplines.json',
+    banes: '../../../app/content/data/vtmv5/banes.json',
+    descBox: '../../../app/content/data/vtmv5/descBox.json'
 } 
 
 const SELECTORS = {
@@ -15,6 +15,8 @@ const SELECTORS = {
     characterName: 'characterName',
     characterAge: 'characterAge',
     characterImage: 'characterImage',
+    sireName: 'sireName',
+    generation: 'generation',
 
     // Attributes
     dataClan: 'data-clan',
@@ -65,7 +67,7 @@ const TRACKER_CONFIG = {
 }
 
 const TRACKER_STEPS = {
-    TOTAL: 5,
+    TOTAL: 6,
     BASIC_INFO: 1,
     CLAN_SELECTION: 2,
     PREDATOR_SELECTION: 5

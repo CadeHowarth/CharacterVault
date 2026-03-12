@@ -100,6 +100,12 @@
                         </svg>
                         <span>5</span>
                     </div>
+                    <div class="legend-step" data-step="6" onclick="navigateToStep(6)">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#e3e3e3">
+                            <path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q150 0 255 105t105 255q0 150-105 255T480-120Zm0-80q109 0 184.5-75.5T740-480q0-109-75.5-184.5T480-740q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220Zm0-60q-75 0-127.5-52.5T300-480q0-75 52.5-127.5T480-660q75 0 127.5 52.5T660-480q0 75-52.5 127.5T480-300Z"/>
+                        </svg>
+                        <span>6</span>
+                    </div>
                 </aside>
                 <div class="container create" id="createContainer" data-background-image="../../content/images/vtmv5_container_background.jpg">
                     <!-- Step 1: Character Name -->
@@ -112,16 +118,6 @@
                         </div>
                         <div class="creator-box-content">
                             <div class="character-inputs" id="character-inputs-container">
-                                <!-- <label class="image-upload-label">
-                                    <div class="image-upload-container">
-                                        <input type="file" accept="image/*" id="characterImage" name="characterImage" style="display: none;">
-                                        <div class="image-preview" id="imagePreview">
-                                            <svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#e3e3e3">
-                                                <path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm40-80h480L570-480 450-320l-90 120-60-80-100 120Zm-40 80v-560 560Z"/>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </label> -->
                                 <label class="char-input">
                                     <b>Character Name</b>
                                     <input type="text" placeholder="What is your name?" data-testId="charNameInput" name="name" id="characterName" required>
@@ -135,6 +131,16 @@
                                         <option value="ancilla">Neonate (embraced 15 - 50 years ago)</option>
                                         <option value="elder">Ancilla (embraced 50 - 100 years ago)</option>
                                     </select>
+                                </label>
+                                <label class="char-input">
+                                    <b>Sire Name</b>
+                                    <input type="text" placeholder="What is their name?" data-testId="sireNameInput" name="name" id="sireName" required>
+                                    <span class="error" aria-live="polite" id="name-error"></span>
+                                </label>
+                                <label class="char-input">
+                                    <b>Sire Generation</b>
+                                    <input placeholder="Generation from 2-12" data-testId="sireGenInput" type="text" inputmode="numeric" pattern="([2-9]|1[0-2])" id="generation" required>
+                                    <span class="error" aria-live="polite" id="generation-error"></span>
                                 </label>
                             </div>
                             <button type="button" class="step-submit-btn" onclick="submitStep(1)">Continue</button>
@@ -817,7 +823,385 @@
                                     <span class="predator-name">Siren</span>
                                 </div>
                             </div>
-                            <button type="button" class="step-submit-btn" onclick="submitStep(5)">Complete Character</button>
+                            <button type="button" class="step-submit-btn" onclick="submitStep(5)">Continue</button>
+                        </div>
+                    </div>
+
+                                        <!-- Step 6: Advantages -->
+                    <div class="creator-box" id="step-6" data-step="6">
+                        <div class="creator-box-header" onclick="toggleBox(6)">
+                            <h4>Advantages</h4>
+                            <svg class="collapse-icon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+                                <path d="M480-360 280-560h400L480-360Z"/>
+                            </svg>
+                        </div>
+                        <div class="creator-box-content">
+                            <div class="advantages-section">
+                                <h5>Merits</h5>
+                                <div class="advantages-container">
+                                    <div class="advantage-category">
+                                        <h6>Linguistics</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Linguistics</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="linguistics">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="advantages-section">
+                                <h5>Backgrounds</h5>
+                                <div class="advantages-container">
+                                    <div class="advantage-category">
+                                        <h6>Allies</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Allies</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="allies">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Contacts</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Contacts</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="contacts">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Fame</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Fame</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="fame">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Influencer</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="influencer">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Enduring Fame</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="enduring-fame">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Influence</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Influence</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="influence">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Haven</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Haven</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="haven">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Hidden Armory</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="armory">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Cell</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="cell">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Watchmen</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="watchmen">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Laboratory</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="laboratory">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Library</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="library">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Location</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="location">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Luxury</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="luxury">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Postern</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="postern">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Security System</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="security-system">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Surgery</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="surgery">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Warding</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="warding">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Holy Ground</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="holy-ground">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Shrine</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="shrine">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Business Establishment</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="business">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Furcus</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="furcus">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Machine Shop</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="machine">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Mobile</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="mobile">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Armored</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="armored">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Smugglers Stash</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="smugglers">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Spare Plates</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="spare-plates">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Herd</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Herd</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="herd">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Mask</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Mask</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="mask">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Zeroed</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="zeroed">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>Cobbler</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="cobbler">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Mawla</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Mawla</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="mawla">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Resources</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Resources</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="resources">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Retainers</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Retainers</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="retainers">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="advantage-category">
+                                        <h6>Status</h6>
+                                        <div class="advantage-grid">
+                                            <div class="advantage-item">
+                                                <label>Status</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="status">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                            <div class="advantage-item">
+                                                <label>City Secrets</label>
+                                                <div class="tracker-button-group" data-type="advantage" data-name="city-secrets">
+                                                    <div class="tracker-buttons">
+                                                    </div>
+                                                    <button type="button" class="decrement-btn">−</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

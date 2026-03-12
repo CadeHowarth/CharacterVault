@@ -11,9 +11,13 @@
         "graphql": "^16.11.0",
         "graphql-http": "^1.22.4",
         "graphql-tag": "^2.12.6",
+        "htm": "^3.1.1",
         "jsonwebtoken": "^9.0.2",
         "pg": "^8.16.3",
-        "pg-promise": "^12.2.0"
+        "pg-promise": "^12.2.0",
+        "preact": "^10.29.0",
+        "preact-iso": "^2.11.1",
+        "preact-render-to-string": "^6.6.6"
     },
     "scripts": {
         "start": "node server.js",
