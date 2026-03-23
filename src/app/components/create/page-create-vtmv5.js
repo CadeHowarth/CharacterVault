@@ -41,7 +41,7 @@ export const Create = () => {
                     ${LegendStep({ step: 5, iconPath: legendIcons[5] })}
                     ${LegendStep({ step: 6, iconPath: legendIcons[6] })}
                 </aside>
-                <div class="container create" id="createContainer" data-background-image="../../content/images/vtmv5_container_background.jpg">
+                <div class="container create" id="createContainer" data-background-image="/app/content/images/vtmv5_container_background.jpg">
                     ${CreatorBox({
                         step: 1,
                         title: 'Who is Your Kindred?',

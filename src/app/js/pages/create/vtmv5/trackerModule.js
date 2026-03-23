@@ -8,6 +8,19 @@ function initializeTracker(container) {
     let count = 0
     const MAX = TRACKER_CONFIG.maxDots
 
+    // Taking value of tracker buttons parsing into number
+    function getTrackerValue() {
+        const rawValue = trackerContainer.dataset.value
+        const parsed = Number(rawValue)
+
+        return Number.isNaN(parsed) ? 0 : parsed
+    }
+
+    // Turning number back into injected string
+    function setTrackerValue(value) {
+        trackerContainer.dataset.value = String(value)
+    }
+
     // Initialize tracker dots in DOM
     function initializeDots() {
         for(let i = 0; i < MAX; i++) {
@@ -30,6 +43,9 @@ function initializeTracker(container) {
                 dots[i].classList.remove('active')
             }
         }
+
+        const nextValue = Math.min(MAX, Math.max(0, count))
+        setTrackerValue(nextValue)
     }
 
     // Click events on dots handler
@@ -48,6 +64,7 @@ function initializeTracker(container) {
     }
 
     initializeDots()
+    count = getTrackerValue()
     updateDots()
     trackerContainer.addEventListener("click", incrementTracker)
     decButton.addEventListener("click", decrementTracker)

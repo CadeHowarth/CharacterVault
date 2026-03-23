@@ -7,7 +7,7 @@ const trackerRow = ({ type, name, label, rowClass }) => html`
     <div class="${rowClass}">
         <label>${label}</label>
         <div class="tracker-button-group" data-type="${type}" data-name="${name}">
-            <div class="tracker-buttons"></div>
+            <div class="tracker-buttons" data-value="0"></div>
             <button type="button" class="decrement-btn">−</button>
         </div>
     </div>

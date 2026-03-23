@@ -39,6 +39,17 @@
                         "● ● ● ● They move in a way few humans can and could excel at acrobatics.",
                         "● ● ● ● ● Almost superhuman movements that are liquid and hypnotic."
                     ]
+                },
+                "stamina": {
+                    "header": "Stamina",
+                    "description": "Dexterity represents how agile a character is, how graceful they can be, or how nimble their fingers are.",
+                    "levels": [
+                        "● They can run but struggle with balance and dodging.",
+                        "● A solid sprint and sometimes can appear graceful.",
+                        "● ● ● Impressive agility and their coordination is equal to a trained amateur.",
+                        "● ● ● ● They move in a way few humans can and could excel at acrobatics.",
+                        "● ● ● ● ● Almost superhuman movements that are liquid and hypnotic."
+                    ]
                 }
             }
         }

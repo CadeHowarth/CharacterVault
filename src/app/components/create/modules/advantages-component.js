@@ -91,7 +91,7 @@ export const AdvantagesComp = () => {
                                 <div class="advantage-item">
                                     <label>${item.label}</label>
                                     <div class="tracker-button-group" data-type="advantage" data-name="${item.name}">
-                                        <div class="tracker-buttons"></div>
+                                        <div class="tracker-buttons" data-value="0"></div>
                                         <button type="button" class="decrement-btn">−</button>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@ export const AdvantagesComp = () => {
                                 <div class="advantage-item">
                                     <label>${item.label}</label>
                                     <div class="tracker-button-group" data-type="advantage" data-name="${item.name}">
-                                        <div class="tracker-buttons"></div>
+                                        <div class="tracker-buttons" data-value="0"></div>
                                         <button type="button" class="decrement-btn">−</button>
                                     </div>
                                 </div>
